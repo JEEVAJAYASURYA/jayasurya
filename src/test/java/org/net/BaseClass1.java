@@ -2,8 +2,6 @@ package org.net;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +18,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class WriteClass {
+public class BaseClass1 {
 	public static WebDriver driver;
 	public static void launchChrome() {
 		WebDriverManager.chromedriver().setup();
@@ -44,18 +42,18 @@ public class WriteClass {
 	}
 	public static void passValue(WebElement ele,String value) {
 	ele.sendKeys(value);
-}
+	}
 	public static void buttonClick(WebElement elu) {
 		elu.click();
 
 	}
-	public static String getData1(int rownumber,int cellnumber) throws IOException {
+	public static String getData(int row,int cellu) throws IOException {
 		File f = new File("C:\\Users\\HP\\eclipse-workspace\\JaiSurya\\src\\test\\resources\\TestData\\TOOLS.xlsx");
 		FileInputStream fin = new FileInputStream(f);
 		Workbook w = new XSSFWorkbook(fin);
-		Sheet s = w.getSheet("SURYA");
-		Row r = s.getRow(rownumber);
-		Cell c = r.getCell(cellnumber);
+		Sheet s = w.getSheet("surya");
+		Row r = s.getRow(row);
+		Cell c = r.getCell(cellu);
 		int cell = c.getCellType();
 		String value="";
 		if (cell==1) {
@@ -73,32 +71,5 @@ public class WriteClass {
 			 value = String.valueOf(d);
 		}
 return value;
-	}
-
-	
-	public static void getData() throws IOException {
-		
-	
-		File f = new File("C:\\Users\\HP\\eclipse-workspace\\JaiSurya\\src\\test\\resources\\TestData\\TOOLS.xlsx");
-	boolean a = f.createNewFile();
-	System.out.println(a);
-	Workbook w = new XSSFWorkbook();
-	Sheet s = w.createSheet("surya");
-	
-	Row r = s.createRow(0);
-	
-	Cell c = r.createCell(1);
-	c.setCellValue("The email address you entered isn't connected to an account. Find your account and log in.");
-	
-	FileOutputStream fout = new FileOutputStream(f);
-	w.write(fout);
-	System.out.println("success");
-	}
 }
-		
-		
-		
-		
-		
-		
-	
+}

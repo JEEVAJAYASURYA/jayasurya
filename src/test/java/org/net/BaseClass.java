@@ -49,10 +49,10 @@ public class BaseClass {
 
 	}
 	public static String getData(int rownumber,int cellnumber) throws IOException {
-		File f = new File("C:\\Users\\HP\\eclipse-workspace\\JaiSurya\\src\\test\\resources\\TestData\\jai.xlsx");
+		File f = new File("C:\\Users\\HP\\eclipse-workspace\\JaiSurya\\src\\test\\resources\\TestData\\love.xlsx");
 		FileInputStream fin = new FileInputStream(f);
 		Workbook w = new XSSFWorkbook(fin);
-		Sheet s = w.getSheet("surya");
+		Sheet s = w.getSheet("love");
 		Row r = s.getRow(rownumber);
 		Cell c = r.getCell(cellnumber);
 		int cell = c.getCellType();
@@ -75,4 +75,4 @@ return value;
 	}
 	
 }
-                                     
+                 
